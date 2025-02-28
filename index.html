@@ -27,7 +27,7 @@
             <div class="flex items-center space-x-10">
                 <button class="flex items-center space-x-4 bg-[#F4F7FF] rounded-full p-2">
                     <img class="w-6 h-6" src="./assets/checkbox.png" alt="">
-                    <span class="text-gray-800 font-bold text-2xl">23</span>
+                    <span id="completed-task-count" class="text-gray-800 font-bold text-2xl">23</span>
                 </button>
                 <button class="bg-[#F4F7FF] rounded-full p-2">
                     <img src="./assets/theme-btn.png" alt="Icon" class="w-8 h-8">
@@ -47,7 +47,7 @@
                             </div>
                             <div>
                                 <p>Task Assigned</p>
-                                <h3 class="text-gray-800 font-bold text-2xl">06</h3>
+                                <h3 id="pending-task-count" class="text-gray-800 font-bold text-2xl">06</h3>
                             </div>
                         </div>
                         <div onclick="window.location.href='./blog.html'"
@@ -64,16 +64,16 @@
                             <div class="bg-white rounded-full p-4">
                                 <img class="w-6 h-6" src="./assets/calender.png" alt="">
                             </div>
-                            <div>
-                                <p>Wed</p>
-                                <h3 class="text-gray-800 font-bold text-2xl">Jul 28, 2025</h3>
+                            <div id="date-today">
+                                
+                                <!-- <h3 class=""></h3> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bg-white p-4 rounded-lg">
-                    <div id="issue-container" class="grid grid-cols-3 gap-4">
-                            <!-- All Issues Goes Here -->
+                    <div id="task-container" class="grid grid-cols-3 gap-4">
+                        <!-- All Tasks Goes Here -->
                     </div>
                 </div>
             </div>
@@ -83,16 +83,13 @@
                     <h3 class="text-xl font-bold">Activity Log</h3>
                 </div>
                 <div class="flex justify-center my-4">
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">Clear History</button>
+                    <button id="clear-history-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Clear History</button>
                 </div>
                 <hr class="border-t border-dashed border-gray-300 my-4">
 
                 <div>
-                    <ul class="list-none space-y-4">
-                        <li class="bg-[#F4F7FF] p-2 rounded-md">You have Complete The Task Add Dark Mode at 12:48:15 PM
-                        </li>
-                        <li class="bg-[#F4F7FF] p-2 rounded-md">You have Complete The Task Add Dark Mode at 12:48:15 PM
-                        </li>
+                    <ul id="activity-container" class="list-none space-y-4">
+                        <!-- Activity List goes here -->
                     </ul>
                 </div>
             </div>

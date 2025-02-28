@@ -1,63 +1,110 @@
-let issueList = [
+let taskList = [
     {
         company: "ShopEase",
-        issueTitle: "Fix Mobile Button Issue",
-        issueDesc: "Debug using chrome developers tool. Check for overlapping content.",
+        taskTitle: "Fix Mobile Button Issue",
+        taskDesc: "Debug using chrome developers tool. Check for overlapping content.",
         deadline: "21 March 2025",
         status: "open"
     },
     {
         company: "TechPro",
-        issueTitle: "Update User Auth",
-        issueDesc: "Implement multi-factor authentication and improve error handling.",
+        taskTitle: "Update User Auth",
+        taskDesc: "Implement multi-factor authentication and improve error handling.",
         deadline: "5 April 2025",
         status: "in progress"
     },
     {
         company: "EcoShop",
-        issueTitle: "Update Product Search",
-        issueDesc: "Improve product search algorithm for better relevancy and speed.",
+        taskTitle: "Update Product Search",
+        taskDesc: "Improve product search algorithm for better relevancy and speed.",
         deadline: "30 March 2025",
         status: "open"
     },
     {
         company: "HealthNow",
-        issueTitle: "Fix Login Bug",
-        issueDesc: "Users are unable to log in using their credentials after the recent update.",
+        taskTitle: "Fix Login Bug",
+        taskDesc: "Users are unable to log in using their credentials after the recent update.",
         deadline: "28 May 2025",
         status: "closed"
     },
     {
         company: "FoodiesHub",
-        issueTitle: "UI Enhancements",
-        issueDesc: "Redesign the menu page to improve navigation and overall UX.",
+        taskTitle: "UI Enhancements",
+        taskDesc: "Redesign the menu page to improve navigation and overall UX.",
         deadline: "15 April 2025",
         status: "open"
     },
     {
         company: "TravelMate",
-        issueTitle: "Update Map Feature",
-        issueDesc: "Fix bugs in the map feature where certain locations are not displayed.",
+        taskTitle: "Update Map Feature",
+        taskDesc: "Fix bugs in the map feature where certain locations are not displayed.",
         deadline: "25 March 2025",
         status: "open"
     }
 ];
 
 window.onload = function () {
-    for (let i = 0; i < issueList.length; i++) {
-        const issueContainer = document.getElementById("issue-container");
-        const issueDiv = document.createElement("div");
-        issueDiv.classList.add("bg-[#F4F7FF]", "rounded-lg", "p-4");
-        issueDiv.innerHTML = `
-        <h4 class="bg-white p-2 rounded-md inline-block">${issueList[i].company}</h4>
-        <h2 class="text-xl font-semibold py-4">${issueList[i].issueTitle}</h2>
-        <p class="bg-white p-2 rounded-md text-sm">${issueList[i].issueDesc}</p>
+    for (let i = 0; i < taskList.length; i++) {
+        const taskContainer = document.getElementById("task-container");
+        const taskDiv = document.createElement("div");
+        taskDiv.classList.add("bg-[#F4F7FF]", "rounded-lg", "p-4");
+        taskDiv.innerHTML = `
+        <h4 class="bg-white p-2 rounded-md inline-block">${taskList[i].company}</h4>
+        <h2 class="text-xl font-semibold py-4">${taskList[i].taskTitle}</h2>
+        <p class="bg-white p-2 rounded-md text-sm">${taskList[i].taskDesc}</p>
         <hr class="border-t border-dashed border-gray-300 my-4">
         <div class="flex items-center justify-between ">
-            <p>Deadline <br><span class="font-semibold">${issueList[i].deadline}</span></p>
-            <button id="complete-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Completed</button>
+            <p>Deadline <br><span class="font-semibold">${taskList[i].deadline}</span></p>
+            <button class="completed-btn bg-blue-600 text-white px-4 py-2 rounded-lg disabled:bg-gray-400 disabled:text-gray-700">Completed</button>
         </div>
     `;
-        issueContainer.appendChild(issueDiv);
+        taskContainer.appendChild(taskDiv);
     }
+
+    // Current Date
+    let now = new Date();
+    const dateToday = document.getElementById("date-today");
+    dateToday.innerHTML = `
+        <p class="text-xl">
+            ${now.toLocaleString('en-US', { weekday: 'short'})}
+            <br>
+            <span class="text-gray-800 font-bold text-2xl">${now.toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric'})}</span>
+        </p>
+    `;
 };
+
+const pendingTaskElement = document.getElementById("pending-task-count");
+const completedTaskElement = document.getElementById("completed-task-count");
+const activityContainer = document.getElementById("activity-container");
+
+let pendingTaskCount = taskList.length;
+let completedTaskCount = parseInt(completedTaskElement.innerText);
+
+
+pendingTaskElement.innerText = pendingTaskCount > 9 ? pendingTaskCount : "0" + pendingTaskCount;
+
+document.body.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("completed-btn")) {
+            pendingTaskCount--;
+            completedTaskCount++;
+            pendingTaskElement.innerText = pendingTaskCount > 9 ? pendingTaskCount : "0" + pendingTaskCount;
+            completedTaskElement.innerText = completedTaskCount;
+            event.target.disabled = true;
+            const taskTitle = event.target.parentElement.parentElement.querySelector("h2").innerText;
+            const newActivity = document.createElement("li");
+            newActivity.classList.add("bg-[#F4F7FF]", "p-2", "rounded-md");
+            let now = new Date();
+            newActivity.innerText = "You have Complete The Task " + taskTitle + " at " + now.toLocaleTimeString();
+            activityContainer.appendChild(newActivity);
+            alert("Board Updated Successfully!");
+            if (pendingTaskCount === 0) {
+                alert("Congrats!!! You have Successfully Completed All the Current Task! ");
+            }
+    }
+});
+
+document.getElementById("clear-history-btn").addEventListener("click", function () {
+    activityContainer.innerHTML = "";
+});
+
+
