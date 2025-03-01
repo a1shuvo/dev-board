@@ -42,7 +42,7 @@ window.onload = function () {
     for (let i = 0; i < taskList.length; i++) {
         const taskContainer = document.getElementById("task-container");
         const taskDiv = document.createElement("div");
-        taskDiv.classList.add("bg-[#F4F7FF]", "rounded-lg", "p-4");
+        taskDiv.classList.add("bg-[#F4F7FF]", "rounded-lg", "p-4", "shadow-md");
         taskDiv.innerHTML = `
         <h4 class="bg-white p-2 rounded-md inline-block">${taskList[i].company}</h4>
         <h2 class="text-xl font-semibold py-4">${taskList[i].taskTitle}</h2>
@@ -50,7 +50,7 @@ window.onload = function () {
         <hr class="border-t border-dashed border-gray-300 my-4">
         <div class="flex items-center justify-between ">
             <p>Deadline <br><span class="font-semibold">${taskList[i].deadline}</span></p>
-            <button class="completed-btn bg-blue-600 text-white px-4 py-2 rounded-lg disabled:bg-gray-400 disabled:text-gray-700">Completed</button>
+            <button class="completed-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800 disabled:bg-gray-300 disabled:text-gray-700">Completed</button>
         </div>
     `;
         taskContainer.appendChild(taskDiv);
