@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevBoard</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -23,7 +25,6 @@
                 <img src="./assets/logo.png" alt="Logo" class="w-8 h-8">
                 <span class="text-2xl text-gray-800">Dev<span class="font-bold">Board</span></span>
             </div>
-
             <div class="flex items-center space-x-10">
                 <button class="flex items-center space-x-4 bg-[#F4F7FF] rounded-full p-2">
                     <img class="w-6 h-6" src="./assets/checkbox.png" alt="">
@@ -37,7 +38,7 @@
 
         <!-- Main Section -->
         <div class="flex gap-4 mt-4">
-
+            <!-- Main Board Section  -->
             <div class="w-3/4 bg-white rounded-lg">
                 <div class="p-4 border-b-2 border-dashed border-gray-300">
                     <div class="flex items-center justify-between gap-4">
@@ -45,16 +46,17 @@
                             <div class="bg-white rounded-full p-4">
                                 <img class="w-6 h-6" src="./assets/checkbox.png" alt="">
                             </div>
-                            <div>
-                                <p>Task Assigned</p>
-                                <h3 id="pending-task-count" class="text-gray-800 font-bold text-2xl">06</h3>
-                            </div>
+                            <p>
+                                Task Assigned
+                                <br>
+                                <span id="pending-task-count" class="text-gray-800 font-bold text-2xl">
+                                    <!-- Pending Task Count Goes here -->
+                                </span>
+                            </p>
                         </div>
                         <div onclick="window.location.href='./blog.html'"
                             class="flex-grow flex items-center space-x-4 bg-gradient-to-r from-[#3752FD] to-[#9BA8F8] rounded-lg p-4 cursor-pointer">
-                            <div>
-                                <img class="w-14 h-14" src="./assets/board.png" alt="">
-                            </div>
+                            <img class="w-14 h-14" src="./assets/board.png" alt="">
                             <p class="text-white">
                                 Discover Something
                                 <br>New Today!
@@ -65,8 +67,7 @@
                                 <img class="w-6 h-6" src="./assets/calender.png" alt="">
                             </div>
                             <div id="date-today">
-                                
-                                <!-- <h3 class=""></h3> -->
+                                <!-- Current Date Goes Here -->
                             </div>
                         </div>
                     </div>
@@ -77,16 +78,16 @@
                     </div>
                 </div>
             </div>
+            <!-- Activity Log Sidebar Section -->
             <div class="w-1/4 bg-white rounded-lg p-4">
                 <div class="flex items-center space-x-4 justify-center">
                     <img class="w-6 h-6" src="./assets/activity.png" alt="">
                     <h3 class="text-xl font-bold">Activity Log</h3>
                 </div>
                 <div class="flex justify-center my-4">
-                    <button id="clear-history-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Clear History</button>
+                    <button id="clear-history-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Clear History</button>
                 </div>
-                <hr class="border-t border-dashed border-gray-300 my-4">
-
+                <hr class="border border-dashed border-gray-300 my-4">
                 <div>
                     <ul id="activity-container" class="list-none space-y-4">
                         <!-- Activity List goes here -->
@@ -96,6 +97,7 @@
         </div>
     </div>
 
+    <!-- JS Scripts -->
     <script src="./js/script.js"></script>
 </body>
 

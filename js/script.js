@@ -3,46 +3,41 @@ let taskList = [
         company: "ShopEase",
         taskTitle: "Fix Mobile Button Issue",
         taskDesc: "Debug using chrome developers tool. Check for overlapping content.",
-        deadline: "21 March 2025",
-        status: "open"
+        deadline: "21 March 2025"
     },
     {
         company: "TechPro",
         taskTitle: "Update User Auth",
         taskDesc: "Implement multi-factor authentication and improve error handling.",
-        deadline: "5 April 2025",
-        status: "in progress"
+        deadline: "5 April 2025"
     },
     {
         company: "EcoShop",
         taskTitle: "Update Product Search",
         taskDesc: "Improve product search algorithm for better relevancy and speed.",
-        deadline: "30 March 2025",
-        status: "open"
+        deadline: "30 March 2025"
     },
     {
         company: "HealthNow",
         taskTitle: "Fix Login Bug",
         taskDesc: "Users are unable to log in using their credentials after the recent update.",
-        deadline: "28 May 2025",
-        status: "closed"
+        deadline: "28 May 2025"
     },
     {
         company: "FoodiesHub",
         taskTitle: "UI Enhancements",
         taskDesc: "Redesign the menu page to improve navigation and overall UX.",
-        deadline: "15 April 2025",
-        status: "open"
+        deadline: "15 April 2025"
     },
     {
         company: "TravelMate",
         taskTitle: "Update Map Feature",
         taskDesc: "Fix bugs in the map feature where certain locations are not displayed.",
-        deadline: "25 March 2025",
-        status: "open"
+        deadline: "25 March 2025"
     }
 ];
 
+// Added Task List When Documet Loaded
 window.onload = function () {
     for (let i = 0; i < taskList.length; i++) {
         const taskContainer = document.getElementById("task-container");
@@ -66,9 +61,9 @@ window.onload = function () {
     const dateToday = document.getElementById("date-today");
     dateToday.innerHTML = `
         <p class="text-xl">
-            ${now.toLocaleString('en-US', { weekday: 'short'})}
+            ${now.toLocaleString('en-US', { weekday: 'short' })}
             <br>
-            <span class="text-gray-800 font-bold text-2xl">${now.toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric'})}</span>
+            <span class="text-gray-800 font-bold text-2xl">${now.toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</span>
         </p>
     `;
 };
@@ -80,31 +75,37 @@ const activityContainer = document.getElementById("activity-container");
 let pendingTaskCount = taskList.length;
 let completedTaskCount = parseInt(completedTaskElement.innerText);
 
+pendingTaskElement.innerText = pendingTaskCount > 9 || pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
 
-pendingTaskElement.innerText = pendingTaskCount > 9 ||  pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
-
+// Completed Button
 document.body.addEventListener("click", function (event) {
     if (event.target && event.target.classList.contains("completed-btn")) {
-            pendingTaskCount--;
-            completedTaskCount++;
-            pendingTaskElement.innerText = pendingTaskCount > 9 ||  pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
-            completedTaskElement.innerText = completedTaskCount;
-            event.target.disabled = true;
-            const taskTitle = event.target.parentElement.parentElement.querySelector("h2").innerText;
-            const newActivity = document.createElement("li");
-            newActivity.classList.add("bg-[#F4F7FF]", "p-2", "rounded-md");
-            let now = new Date();
-            newActivity.innerText = "You have Complete The Task " + taskTitle + " at " + now.toLocaleTimeString();
-            activityContainer.appendChild(newActivity);
-            alert("Board Updated Successfully!");
-            if (pendingTaskCount === 0) {
-                alert("Congrats!!! You have Successfully Completed All the Current Task! ");
-            }
+        pendingTaskCount--;
+        completedTaskCount++;
+        pendingTaskElement.innerText = pendingTaskCount > 9 || pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
+        completedTaskElement.innerText = completedTaskCount;
+        event.target.disabled = true;
+        const taskTitle = event.target.parentElement.parentElement.querySelector("h2").innerText;
+        const newActivity = document.createElement("li");
+        newActivity.classList.add("bg-[#F4F7FF]", "p-2", "rounded-md");
+        let now = new Date();
+        newActivity.innerText = "You have Complete The Task " + taskTitle + " at " + now.toLocaleTimeString();
+        activityContainer.appendChild(newActivity);
+        alert("Board Updated Successfully!");
+        if (pendingTaskCount === 0) {
+            alert("Congrats!!! You have Successfully Completed All the Current Task! ");
+        }
     }
 });
 
+// Clear History Button
 document.getElementById("clear-history-btn").addEventListener("click", function () {
     activityContainer.innerHTML = "";
+});
+
+// Random Color Background Button
+document.getElementById("theme-btn").addEventListener("click", function () {
+    document.body.style.backgroundColor = randomColor();
 });
 
 // Random RGB color generator
@@ -115,7 +116,3 @@ function randomColor() {
 
     return `rgb(${r}, ${g}, ${b}`;
 }
-
-document.getElementById("theme-btn").addEventListener("click", function () {
-    document.body.style.backgroundColor = randomColor();
-});
