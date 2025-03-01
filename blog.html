@@ -32,23 +32,50 @@
         <div class="space-y-4">
             <div class="bg-white rounded-lg p-4 space-y-4">
                 <h2 class="font-bold pb-4 border-b-2 border-dashed border-gray-300">Question-1: What are the different ways to select an element in the DOM?</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque atque necessitatibus odio et iusto nemo saepe omnis reiciendis, voluptate totam officia dignissimos eaque quis perferendis deserunt, ex aliquid, sunt velit.</p>
+                <p class="text-gray-700">
+                    Genereally there are 5 different ways to select an element in the DOM.
+                    <ul class="list-none space-y-2">
+                        <li><code class="bg-slate-300 p-1 rounded-md">getElementById()</code>: Select an element by using it's ID.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">getElementsByClassName()</code>: Select all elements by using a class name.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">getElementsByTagName()</code>: Select all elements by using a tag name.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">querySelector()</code>: Select first element by using CSS selector.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">querySelectorAll()</code>: Select all elements by using CSS selector.</li>
+                    </ul>
+                </p>
             </div>
             <div class="bg-white rounded-lg p-4 space-y-4">
                 <h2 class="font-bold pb-4 border-b-2 border-dashed border-gray-300">Question-2: What is the difference between innerHTML, innerText, and textContent ?</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque atque necessitatibus odio et iusto nemo saepe omnis reiciendis, voluptate totam officia dignissimos eaque quis perferendis deserunt, ex aliquid, sunt velit.</p>
+                <p class="text-gray-700">
+                    <ul class="list-none space-y-2">
+                        <li><code class="bg-slate-300 p-1 rounded-md">innerHTML</code>: Returns or sets the HTML content inside an element, including any HTML tags, text content & spacing.</l i>
+                        <li><code class="bg-slate-300 p-1 rounded-md">innerText</code>: Returns or sets the text content inside an element without CSS hidden text.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">textContent</code>: Returns or sets the text content inside an element with CSS hidden text.</li>
+                    </ul>
+                </p>
             </div>
             <div class="bg-white rounded-lg p-4 space-y-4">
                 <h2 class="font-bold pb-4 border-b-2 border-dashed border-gray-300">Question-3: What is event delegation in the DOM?</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque atque necessitatibus odio et iusto nemo saepe omnis reiciendis, voluptate totam officia dignissimos eaque quis perferendis deserunt, ex aliquid, sunt velit.</p>
+                <p class="text-gray-700">
+                    Event Delegation is a technique where we can use a single event listener to a parent element instead of multiple event listeners to its child elements. This technique uses event propagation or bubbling to track & manipulate targeted child elements. It helps to improve performance and handles dynamically added elements as well. 
+                </p>
             </div>
             <div class="bg-white rounded-lg p-4 space-y-4">
                 <h2 class="font-bold pb-4 border-b-2 border-dashed border-gray-300">Question-4: What is event bubbling in the DOM?</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque atque necessitatibus odio et iusto nemo saepe omnis reiciendis, voluptate totam officia dignissimos eaque quis perferendis deserunt, ex aliquid, sunt velit.</p>
+                <p class="text-gray-700">
+                    Event bubbling is a behaviour in the DOM, when a event happens it not only triggers the targeted element but also "bubbled up" to its parent elements until reaches the DOM root element. Like if a click event occurs, the event will propagate upwards to its parent, grandparent & so on.
+                </p>
             </div>
             <div class="bg-white rounded-lg p-4 space-y-4">
                 <h2 class="font-bold pb-4 border-b-2 border-dashed border-gray-300">Question-5: How do you create, add, and remove elements using JavaScript?</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque atque necessitatibus odio et iusto nemo saepe omnis reiciendis, voluptate totam officia dignissimos eaque quis perferendis deserunt, ex aliquid, sunt velit.</p>
+                <p class="text-gray-700">
+                    In JavaScript there are various methods avaibale to create, add, and remove element in the DOM. Here are given some basic methods for creating, adding, and removing elements in JavaScript.
+
+                    <ul class="list-none space-y-2">
+                        <li><code class="bg-slate-300 p-1 rounded-md">document.createElement()</code>: This method <strong>create</strong> a new element in the DOM</l i>
+                        <li><code class="bg-slate-300 p-1 rounded-md">appendChild()</code>: This method <strong>add</strong> newly created element to the DOM.</li>
+                        <li><code class="bg-slate-300 p-1 rounded-md">removeChild()</code>: This method <strong>remove</strong> an element from the DOM.</li>
+                    </ul>
+                </p>
             </div>
         </div>
 </body>

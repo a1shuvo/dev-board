@@ -81,13 +81,13 @@ let pendingTaskCount = taskList.length;
 let completedTaskCount = parseInt(completedTaskElement.innerText);
 
 
-pendingTaskElement.innerText = pendingTaskCount > 9 ? pendingTaskCount : "0" + pendingTaskCount;
+pendingTaskElement.innerText = pendingTaskCount > 9 ||  pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
 
 document.body.addEventListener("click", function (event) {
     if (event.target && event.target.classList.contains("completed-btn")) {
             pendingTaskCount--;
             completedTaskCount++;
-            pendingTaskElement.innerText = pendingTaskCount > 9 ? pendingTaskCount : "0" + pendingTaskCount;
+            pendingTaskElement.innerText = pendingTaskCount > 9 ||  pendingTaskCount < 1 ? pendingTaskCount : "0" + pendingTaskCount;
             completedTaskElement.innerText = completedTaskCount;
             event.target.disabled = true;
             const taskTitle = event.target.parentElement.parentElement.querySelector("h2").innerText;
